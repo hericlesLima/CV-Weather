@@ -8,5 +8,16 @@
 }
 
 .data-number {
-     
+    font-size: 3rem;    
+}
+
+.card-desc {
+    text-align: center;
+    font-weight: bold;
+}
+
+@media only screen and (max-width: 1000px) {
+    .data-card {
+        width: 18rem;
+    }
 }

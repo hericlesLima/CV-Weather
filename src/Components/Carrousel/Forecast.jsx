@@ -8,7 +8,7 @@ import "./Forecast.css";
 
 var settings = {
   dots: true,
-  infinite: false,
+  infinite: true,
   speed: 500,
   slidesToShow: 5,
   slidesToScroll: 4,
@@ -29,6 +29,7 @@ var settings = {
         slidesToShow: 2,
         slidesToScroll: 2,
         initialSlide: 2,
+        infinite: true,
       },
     },
     {
@@ -36,6 +37,8 @@ var settings = {
       settings: {
         slidesToShow: 1,
         slidesToScroll: 1,
+        infinite: true,
+        speed: 2000,
       },
     },
   ],
@@ -44,7 +47,7 @@ var settings = {
 export default function Forecast() {
   return (
     <div className="slider box w-100">
-      <Slider {...settings} className="w-70">
+      {/* <Slider {...settings} className="w-70">
         <div className="slide box" style={{display: "flex"}}>
           <Card day="SEG" temperature="15"/>
         </div>
@@ -59,6 +62,24 @@ export default function Forecast() {
         </div>
         <div className="slide box">
           <Card day="SEX" temperature="15"/>
+        </div>
+      </Slider> */}
+
+      <Slider {...settings} className="w-70">
+        <div className="slide box" style={{ display: "flex" }}>
+          <Card day="SEG" temperature="15" />
+        </div>
+        <div className="slide box">
+          <Card day="TER" temperature="15" />
+        </div>
+        <div className="slide box">
+          <Card day="QUA" temperature="15" />
+        </div>
+        <div className="slide box">
+          <Card day="QUI" temperature="15" />
+        </div>
+        <div className="slide box">
+          <Card day="SEX" temperature="15" />
         </div>
       </Slider>
     </div>
