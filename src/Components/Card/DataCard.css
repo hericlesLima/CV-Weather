@@ -18,6 +18,14 @@
 
 @media only screen and (max-width: 1000px) {
     .data-card {
-        width: 18rem;
+        width: 16rem;
+    }
+
+    .card-desc {
+        font-size: 1.5rem;
+    }
+
+    .desc-unity{
+        font-size: 2.5rem;
     }
 }

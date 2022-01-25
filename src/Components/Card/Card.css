@@ -1,6 +1,6 @@
 .card {
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-evenly;
   width: 90%;
   height: 40vh;
   border: 0.1rem solid var(--primary);
@@ -23,6 +23,17 @@
 
 @media only screen and (max-width: 1000px) {
   .card {
-    width: 96%;
+    width: 16rem;
+    margin-left: 0.6rem;
+  }
+
+  .card-icon, img {
+    width: 10rem;
+    height: 10rem;
+  }
+
+  .day, .temp {
+    font-size: 1.5rem;
+    font-weight: 600;
   }
 }

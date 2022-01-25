@@ -48,7 +48,7 @@
 }
 
 .clouds {
-  width: 17.313rem;
+  width: 7rem;
   height: auto;
 }
 
@@ -87,6 +87,22 @@
   justify-content: space-between;
 }
 
+.leaflet-container {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  width: 70%;
+  height: 400px;
+  display: flex;
+  align-self: center;
+}
+
+.map-leaflet{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+
 
 @media only screen and (max-width: 1000px) {
   .search {
@@ -123,7 +139,7 @@
   }
 
   .data-title {
-    margin-top: 3rem; 
+    margin-top: 5rem; 
   }
 
   .data-1, .data-2 {
