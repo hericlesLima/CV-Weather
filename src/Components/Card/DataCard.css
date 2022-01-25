@@ -1,0 +1,12 @@
+.data-card {
+    flex-direction: column;
+    justify-content: space-around;
+    width: 10rem;
+    height: 30vh;
+    border: 0.1rem solid var(--primary);
+    border-radius: 10px;
+}
+
+.data-number {
+     
+}
