@@ -2,15 +2,15 @@
   flex-direction: column;
   justify-content: space-around;
   width: 90%;
-  height: 30vh;
+  height: 40vh;
   border: 0.1rem solid var(--primary);
   border-radius: 10px;
   margin-left: 0.4rem;
 }
 
-.card-icon {
-  width: 2.2rem;
-  height: 2.2rem;
+.card-icon, img {
+  width: 7rem;
+  height: 7rem;
 }
 
 .day {

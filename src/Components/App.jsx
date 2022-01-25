@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { fetchWeather } from "./api/fetchWeather";
+import { fetchForecast } from "./api/fetchForecast";
 import "./App.css";
 
 import Card from "./Card/Card";
@@ -52,7 +53,7 @@ var settings = {
 
 export default function App() {
   const [query, setQuery] = useState("");
-  const [weather, setWeather] = useState({});
+  const [weather, setWeather] = useState([]);
 
   var days = [
     "Domingo",
@@ -75,11 +76,20 @@ export default function App() {
   const search = async (e) => {
     if (e.key === "Enter") {
       const data = await fetchWeather(query);
-
-      setWeather(data);
+      const forecastData = await fetchForecast(query)
+      setWeather([data, forecastData]);
       setQuery("");
+      console.log(data)
+      console.log(forecastData)
     }
   };
+
+  useEffect(() => {
+    console.log('useEffect')
+    console.log(weather)
+  }, [weather])
+
+
 
   return (
     <div className="main-container w-100">
@@ -96,16 +106,16 @@ export default function App() {
           onKeyPress={search}
         />
       </div>
-      {weather.main && (
+      {weather[0] && (
         <div>
           <div className="location w-100 box">
-            {weather.name}, {weather.sys.country}
+            {weather[0].name}, {weather[0].sys.country}
           </div>
           <div className="weather-resp w-100 box">
             <div className="temp-date w-50 box h-100 col">
               <div className="temperature">
                 {" "}
-                <div>{Math.round(weather.main.temp)}</div>{" "}
+                <div>{Math.round(weather[0].main.temp)}</div>{" "}
                 <div className="celsius">°C</div>
               </div>
               <div className="date box">
@@ -115,7 +125,7 @@ export default function App() {
             <div className="icon w-50 box h-100">
               <img
                 className="clouds"
-                src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
+                src={`https://openweathermap.org/img/wn/${weather[0].weather[0].icon}@2x.png`}
               />
             </div>
           </div>
@@ -125,19 +135,19 @@ export default function App() {
             <div className="slider box w-100">
               <Slider {...settings} className="w-70">
                 <div className="slide box" style={{ display: "flex" }}>
-                  <Card day="SEG" temperature="15" />
+                  <Card day={day} src={`https://openweathermap.org/img/wn/${weather[1].list[0].weather[0].icon}@2x.png`} temperature={weather[1].list[0].main.temp} />
                 </div>
                 <div className="slide box">
-                  <Card day="TER" temperature="15" />
+                  <Card day={days[current.getDay()+1]} src={`https://openweathermap.org/img/wn/${weather[1].list[1].weather[0].icon}@2x.png`} temperature={weather[1].list[1].main.temp} />
                 </div>
                 <div className="slide box">
-                  <Card day="QUA" temperature="15" />
+                  <Card day={days[current.getDay()+2]} src={`https://openweathermap.org/img/wn/${weather[1].list[2].weather[0].icon}@2x.png`} temperature={weather[1].list[2].main.temp} />
                 </div>
                 <div className="slide box">
-                  <Card day="QUI" temperature="15" />
+                  <Card day={days[current.getDay()+3]} src={`https://openweathermap.org/img/wn/${weather[1].list[3].weather[0].icon}@2x.png`} temperature={weather[1].list[3].main.temp} />
                 </div>
                 <div className="slide box">
-                  <Card day="SEX" temperature="15" />
+                  <Card day={days[current.getDay()+4]} src={`https://openweathermap.org/img/wn/${weather[1].list[4].weather[0].icon}@2x.png`} temperature={weather[1].list[4].main.temp} />
                 </div>
               </Slider>
             </div>
@@ -147,40 +157,40 @@ export default function App() {
             <div className="data-1 box">
               <DataCard
                 desc="Minimos"
-                data={Math.round(weather.main.temp_min)}
+                data={Math.round(weather[0].main.temp_min)}
                 unity="°C"
               />
               <DataCard
                 desc="Máximos"
-                data={Math.round(weather.main.temp_max)}
+                data={Math.round(weather[0].main.temp_max)}
                 unity="°C"
               />
               <DataCard
                 desc="Sensação térmica"
-                data={weather.main.feels_like}
+                data={weather[0].main.feels_like}
                 unity="°C"
               />
               <DataCard
                 desc="Humidade"
-                data={weather.main.humidity}
+                data={weather[0].main.humidity}
                 unity="%"
               />
             </div>
             <div className="data-2 box">
               <DataCard
                 desc="Visibilidade"
-                data={weather.visibility}
+                data={weather[0].visibility}
                 unity="m"
               />
               <DataCard
                 desc="Velocidade do vento"
-                data={weather.wind.speed}
+                data={weather[0].wind.speed}
                 unity="KM/h"
               />
-              <DataCard desc="Direcão" data={weather.wind.deg} unity="°" />
+              <DataCard desc="Direcão" data={weather[0].wind.deg} unity="°" />
               <DataCard
                 desc="Pressão atmosférica"
-                data={weather.main.pressure}
+                data={weather[0].main.pressure}
                 unity="atm"
               />
             </div>

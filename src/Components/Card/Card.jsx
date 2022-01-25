@@ -9,8 +9,8 @@ export default function Card (props) {
             <div>
                 <p className="day">{props.day}</p>
             </div>
-            <div className="card-icon">
-                <img className="card-icon" src={Weather}/>
+            <div>
+                <img className="card-icon" src={props.src}/>
             </div>
             <div>
                 <p className="temp">{props.temperature}°C</p>
