@@ -17,6 +17,7 @@ import DataCard from "./Card/DataCard";
 import Footer from "./Footer/footer";
 import Map from "./Map/map";
 import MapLeaflet from "./Map/map";
+import Location from "./Location/location";
 
 var settings = {
   dots: true,
@@ -111,6 +112,7 @@ export default function App() {
           onKeyPress={search}
         />
       </div>
+
       {weather[0] && (
         <div>
           <div className="location w-100 box">
@@ -143,37 +145,37 @@ export default function App() {
               <Slider {...settings} className="w-70">
                 <div className="slide box" style={{ display: "flex" }}>
                   <Card
-                    day={day}
+                    day={days[new Date(weather[1].list[0].dt_txt).getDay()]}
                     src={`https://openweathermap.org/img/wn/${weather[1].list[0].weather[0].icon}@2x.png`}
                     temperature={weather[1].list[0].main.temp}
                   />
                 </div>
                 <div className="slide box">
                   <Card
-                    day={days[current.getDay() + 1]}
-                    src={`https://openweathermap.org/img/wn/${weather[1].list[1].weather[0].icon}@2x.png`}
-                    temperature={weather[1].list[1].main.temp}
+                    day={days[new Date(weather[1].list[8].dt_txt).getDay()]}
+                    src={`https://openweathermap.org/img/wn/${weather[1].list[8].weather[0].icon}@2x.png`}
+                    temperature={weather[1].list[8].main.temp}
                   />
                 </div>
                 <div className="slide box">
                   <Card
-                    day={days[current.getDay() + 2]}
-                    src={`https://openweathermap.org/img/wn/${weather[1].list[2].weather[0].icon}@2x.png`}
-                    temperature={weather[1].list[2].main.temp}
+                    day={days[new Date(weather[1].list[16].dt_txt).getDay()]}
+                    src={`https://openweathermap.org/img/wn/${weather[1].list[16].weather[0].icon}@2x.png`}
+                    temperature={weather[1].list[16].main.temp}
                   />
                 </div>
                 <div className="slide box">
                   <Card
-                    day={days[current.getDay() + 3]}
-                    src={`https://openweathermap.org/img/wn/${weather[1].list[3].weather[0].icon}@2x.png`}
-                    temperature={weather[1].list[3].main.temp}
+                    day={days[new Date(weather[1].list[24].dt_txt).getDay()]}
+                    src={`https://openweathermap.org/img/wn/${weather[1].list[24].weather[0].icon}@2x.png`}
+                    temperature={weather[1].list[24].main.temp}
                   />
                 </div>
                 <div className="slide box">
                   <Card
-                    day={days[current.getDay() + 4]}
-                    src={`https://openweathermap.org/img/wn/${weather[1].list[4].weather[0].icon}@2x.png`}
-                    temperature={weather[1].list[4].main.temp}
+                    day={days[new Date(weather[1].list[32].dt_txt).getDay()]}
+                    src={`https://openweathermap.org/img/wn/${weather[1].list[32].weather[0].icon}@2x.png`}
+                    temperature={weather[1].list[32].main.temp}
                   />
                 </div>
               </Slider>
@@ -225,12 +227,12 @@ export default function App() {
               />
             </div>
           </div>
-          <div className="map-leaflet">
-            <MapLeaflet />
+          <div>
+            <Location />
           </div>
         </div>
       )}
-      <div>
+      <div className="app-footer">
         <Footer />
       </div>
     </div>

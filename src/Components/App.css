@@ -29,8 +29,6 @@
   height: 15rem;
 }
 
-.temp-date {
-}
 
 .temperature {
   font-size: 11.25rem;
@@ -60,6 +58,14 @@
   height: 70vh;
   display: flex;
   flex-direction: column;
+}
+
+.slide {
+  display: flex;
+}
+
+.w-70 {
+  width: 70%;
 }
 
 .data-title {
@@ -101,8 +107,6 @@
   display: flex;
   justify-content: center;
 }
-
-
 
 @media only screen and (max-width: 1000px) {
   .search {
