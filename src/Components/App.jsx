@@ -113,125 +113,128 @@ export default function App() {
         />
       </div>
 
-      {weather[0] && (
-        <div>
-          <div className="location w-100 box">
-            {weather[0].name}, {weather[0].sys.country}
-          </div>
-          <div className="weather-resp w-100 box">
-            <div className="temp-date w-50 box h-100 col">
-              <div className="temperature">
-                {" "}
-                <div>{Math.round(weather[0].main.temp)}</div>{" "}
-                <div className="celsius">°C</div>
-              </div>
-              <div className="date box">
-                {day}, {hour}h{minutes}min
-              </div>
-            </div>
-            <div className="icon w-50 box h-100">
-              <img
-                className="clouds"
-                src={`https://openweathermap.org/img/wn/${weather[0].weather[0].icon}@2x.png`}
-              />
-            </div>
-          </div>
-
-          {/* -------- */}
-
-          <div className="forecast w-100 box">
-            <h2 className="title">Previsão do tempo</h2>
-            <div className="slider box w-100">
-              <Slider {...settings} className="w-70">
-                <div className="slide box" style={{ display: "flex" }}>
-                  <Card
-                    day={days[new Date(weather[1].list[0].dt_txt).getDay()]}
-                    src={`https://openweathermap.org/img/wn/${weather[1].list[0].weather[0].icon}@2x.png`}
-                    temperature={weather[1].list[0].main.temp}
-                  />
-                </div>
-                <div className="slide box">
-                  <Card
-                    day={days[new Date(weather[1].list[8].dt_txt).getDay()]}
-                    src={`https://openweathermap.org/img/wn/${weather[1].list[8].weather[0].icon}@2x.png`}
-                    temperature={weather[1].list[8].main.temp}
-                  />
-                </div>
-                <div className="slide box">
-                  <Card
-                    day={days[new Date(weather[1].list[16].dt_txt).getDay()]}
-                    src={`https://openweathermap.org/img/wn/${weather[1].list[16].weather[0].icon}@2x.png`}
-                    temperature={weather[1].list[16].main.temp}
-                  />
-                </div>
-                <div className="slide box">
-                  <Card
-                    day={days[new Date(weather[1].list[24].dt_txt).getDay()]}
-                    src={`https://openweathermap.org/img/wn/${weather[1].list[24].weather[0].icon}@2x.png`}
-                    temperature={weather[1].list[24].main.temp}
-                  />
-                </div>
-                <div className="slide box">
-                  <Card
-                    day={days[new Date(weather[1].list[32].dt_txt).getDay()]}
-                    src={`https://openweathermap.org/img/wn/${weather[1].list[32].weather[0].icon}@2x.png`}
-                    temperature={weather[1].list[32].main.temp}
-                  />
-                </div>
-              </Slider>
-            </div>
-          </div>
-
-          {/* -------- */}
-
-          <div className="data box">
-            <h2 className="data-title">Mais detalhes do clima</h2>
-            <div className="data-1 box">
-              <DataCard
-                desc="Minimos"
-                data={Math.round(weather[0].main.temp_min)}
-                unity="°C"
-              />
-              <DataCard
-                desc="Máximos"
-                data={Math.round(weather[0].main.temp_max)}
-                unity="°C"
-              />
-              <DataCard
-                desc="Sensação térmica"
-                data={weather[0].main.feels_like}
-                unity="°C"
-              />
-              <DataCard
-                desc="Humidade"
-                data={weather[0].main.humidity}
-                unity="%"
-              />
-            </div>
-            <div className="data-2 box">
-              <DataCard
-                desc="Visibilidade"
-                data={weather[0].visibility}
-                unity="m"
-              />
-              <DataCard
-                desc="Velocidade do vento"
-                data={weather[0].wind.speed}
-                unity="KM/h"
-              />
-              <DataCard desc="Direcão" data={weather[0].wind.deg} unity="°" />
-              <DataCard
-                desc="Pressão atmosférica"
-                data={weather[0].main.pressure}
-                unity="atm"
-              />
-            </div>
-          </div>
+      <div className="weather">
+        {weather[0] && (
           <div>
-            <Location />
+            <div className="location w-100 box">
+              {weather[0].name}, {weather[0].sys.country}
+            </div>
+            <div className="weather-resp w-100 box">
+              <div className="temp-date w-50 box h-100 col">
+                <div className="temperature">
+                  {" "}
+                  <div>{Math.round(weather[0].main.temp)}</div>{" "}
+                  <div className="celsius">°C</div>
+                </div>
+                <div className="date box">
+                  {day}, {hour}h{minutes}min
+                </div>
+              </div>
+              <div className="icon w-50 box h-100">
+                <img
+                  className="clouds"
+                  src={`https://openweathermap.org/img/wn/${weather[0].weather[0].icon}@2x.png`}
+                />
+              </div>
+            </div>
+
+            {/* -------- */}
+
+            <div className="forecast w-100 box">
+              <h2 className="title">Previsão do tempo</h2>
+              <div className="slider box w-100">
+                <Slider {...settings} className="w-70">
+                  <div className="slide box" style={{ display: "flex" }}>
+                    <Card
+                      day={days[new Date(weather[1].list[0].dt_txt).getDay()]}
+                      src={`https://openweathermap.org/img/wn/${weather[1].list[0].weather[0].icon}@2x.png`}
+                      temperature={weather[1].list[0].main.temp}
+                    />
+                  </div>
+                  <div className="slide box">
+                    <Card
+                      day={days[new Date(weather[1].list[8].dt_txt).getDay()]}
+                      src={`https://openweathermap.org/img/wn/${weather[1].list[8].weather[0].icon}@2x.png`}
+                      temperature={weather[1].list[8].main.temp}
+                    />
+                  </div>
+                  <div className="slide box">
+                    <Card
+                      day={days[new Date(weather[1].list[16].dt_txt).getDay()]}
+                      src={`https://openweathermap.org/img/wn/${weather[1].list[16].weather[0].icon}@2x.png`}
+                      temperature={weather[1].list[16].main.temp}
+                    />
+                  </div>
+                  <div className="slide box">
+                    <Card
+                      day={days[new Date(weather[1].list[24].dt_txt).getDay()]}
+                      src={`https://openweathermap.org/img/wn/${weather[1].list[24].weather[0].icon}@2x.png`}
+                      temperature={weather[1].list[24].main.temp}
+                    />
+                  </div>
+                  <div className="slide box">
+                    <Card
+                      day={days[new Date(weather[1].list[32].dt_txt).getDay()]}
+                      src={`https://openweathermap.org/img/wn/${weather[1].list[32].weather[0].icon}@2x.png`}
+                      temperature={weather[1].list[32].main.temp}
+                    />
+                  </div>
+                </Slider>
+              </div>
+            </div>
+
+            {/* -------- */}
+
+            <div className="data box">
+              <h2 className="data-title">Mais detalhes do clima</h2>
+              <div className="data-1 box">
+                <DataCard
+                  desc="Minimos"
+                  data={Math.round(weather[0].main.temp_min)}
+                  unity="°C"
+                />
+                <DataCard
+                  desc="Máximos"
+                  data={Math.round(weather[0].main.temp_max)}
+                  unity="°C"
+                />
+                <DataCard
+                  desc="Sensação térmica"
+                  data={weather[0].main.feels_like}
+                  unity="°C"
+                />
+                <DataCard
+                  desc="Humidade"
+                  data={weather[0].main.humidity}
+                  unity="%"
+                />
+              </div>
+              <div className="data-2 box">
+                <DataCard
+                  desc="Visibilidade"
+                  data={weather[0].visibility}
+                  unity="m"
+                />
+                <DataCard
+                  desc="Velocidade do vento"
+                  data={weather[0].wind.speed}
+                  unity="KM/h"
+                />
+                <DataCard desc="Direcão" data={weather[0].wind.deg} unity="°" />
+                <DataCard
+                  desc="Pressão atmosférica"
+                  data={weather[0].main.pressure}
+                  unity="atm"
+                />
+              </div>
+            </div>
+            <div>
+              <Location />
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
+
       <div className="app-footer">
         <Footer />
       </div>

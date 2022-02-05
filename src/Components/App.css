@@ -1,6 +1,6 @@
 .main-container {
   background-color: var(--bg-color);
-  font-family: "Inconsolata", monospace;
+  font-family: 'Rajdhani', sans-serif;
   color: var(--primary);
 }
 
@@ -23,6 +23,10 @@
   height: 3rem;
   font-weight: 600;
   font-size: 2rem;
+}
+
+.weather {
+  min-height: 36vh;
 }
 
 .weather-resp {
