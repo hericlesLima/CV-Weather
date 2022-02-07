@@ -15,9 +15,12 @@ import "slick-carousel/slick/slick-theme.css";
 import Forecast from "./Carrousel/Forecast";
 import DataCard from "./Card/DataCard";
 import Footer from "./Footer/footer";
-import Map from "./Map/map";
-import MapLeaflet from "./Map/map";
 import Location from "./Location/location";
+
+import Moon from "../Assets/moon.png";
+import Sun from "../Assets/sunny.png";
+import Lottie from "react-lottie";
+import animationData from "../Assets/weather-lottie.json";
 
 var settings = {
   dots: true,
@@ -60,6 +63,7 @@ var settings = {
 export default function App() {
   const [query, setQuery] = useState("");
   const [weather, setWeather] = useState([]);
+  const [mode, setMode] = useState("main-container light w-100");
 
   var days = [
     "Domingo",
@@ -70,14 +74,12 @@ export default function App() {
     "Sexta",
     "Sábado",
   ];
-
+  
   const current = new Date();
   const day = days[current.getDay()];
-
   const hour = current.getHours();
   const minutes = current.getMinutes();
-  const seconds = current.getSeconds();
-  const [city, setCity] = useState();
+  
 
   const search = async (e) => {
     if (e.key === "Enter") {
@@ -86,31 +88,55 @@ export default function App() {
       const mapData = await fetchMap();
       setWeather([data, forecastData, mapData]);
       setQuery("");
-      console.log(data);
-      console.log(forecastData);
-      console.log(mapData);
     }
   };
 
-  useEffect(() => {
-    console.log("useEffect");
-    console.log(weather);
-  }, [weather]);
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData,
+    rendererSettings: {
+      preserveAspectRatio: "xMidYMid slice",
+    },
+  };
+
 
   return (
-    <div className="main-container w-100">
-      <div className="search-div w-100 box">
-        <input
-          type="text"
-          className="search"
-          placeholder="Pesquise por uma cidade"
-          value={query}
-          onChange={(e) => {
-            setQuery(e.target.value);
-            setCity(e.target.value);
-          }}
-          onKeyPress={search}
-        />
+    <div className={mode}>
+      <div className="home">
+        <div className="mode">
+          <button
+            className="mode-btn"
+            onClick={() => {
+              setMode("main-container light w-100");
+            }}
+          >
+            <img src={Sun} />
+          </button>
+
+          <button
+            className="mode-btn"
+            onClick={() => {
+              setMode("main-container dark w-100");
+            }}
+          >
+            <img src={Moon} />
+          </button>
+        </div>
+        <div className="search-div w-100 box">
+          <input
+            type="text"
+            className="search"
+            placeholder="Pesquise por uma cidade"
+            value={query}
+            onChange={(e) => {
+              setQuery(e.target.value);
+            }}
+            onKeyPress={search}
+          />
+        </div>
+
+        <Lottie options={defaultOptions} height={400} width={400} />
       </div>
 
       <div className="weather">
@@ -122,8 +148,7 @@ export default function App() {
             <div className="weather-resp w-100 box">
               <div className="temp-date w-50 box h-100 col">
                 <div className="temperature">
-                  {" "}
-                  <div>{Math.round(weather[0].main.temp)}</div>{" "}
+                  <div>{Math.round(weather[0].main.temp)}</div>
                   <div className="celsius">°C</div>
                 </div>
                 <div className="date box">
@@ -234,7 +259,6 @@ export default function App() {
           </div>
         )}
       </div>
-
       <div className="app-footer">
         <Footer />
       </div>

@@ -1,22 +1,57 @@
+.light {
+  --bg-color: #e8eae6;
+  --primary: #7c9473;
+}
+
+.dark {
+  --bg-color: #2C3333;
+  --primary: #2666CF;
+}
+
 .main-container {
   background-color: var(--bg-color);
   font-family: 'Rajdhani', sans-serif;
   color: var(--primary);
 }
+.home {
+  background-image: url(../Assets/background.png);
+  height: 100vh;
+}
 
-.search-div {
-  height: 10rem;
+.mode {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 1rem;
+  padding-top: 1rem;
+}
+
+.mode-btn {
+  border: none;
+  background-color: transparent;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.mode-btn img {
+  width: 2rem;
+  height: 2rem;
 }
 
 .search {
   width: 45%;
   height: 2rem;
   padding-left: 1.5rem;
-  background-color: var(--bg-color);
-  color: var(--primary);
+  background-color: transparent;
+  color: var(--bg-color);
   outline: none;
-  border: 0.1rem solid var(--primary);
+  border: 0.1rem solid var(--bg-color);
   border-radius: 0.5rem;
+}
+
+::placeholder{
+  color: var(--bg-color);
+  font-family: 'Rajdhani', sans-serif;;
+  font-size: 0.9rem;
 }
 
 .location {
@@ -26,7 +61,7 @@
 }
 
 .weather {
-  min-height: 36vh;
+  /* min-height: 23vh; */
 }
 
 .weather-resp {
