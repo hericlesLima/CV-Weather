@@ -74,12 +74,11 @@ export default function App() {
     "Sexta",
     "Sábado",
   ];
-  
+
   const current = new Date();
   const day = days[current.getDay()];
   const hour = current.getHours();
   const minutes = current.getMinutes();
-  
 
   const search = async (e) => {
     if (e.key === "Enter") {
@@ -100,28 +99,29 @@ export default function App() {
     },
   };
 
-
   return (
     <div className={mode}>
       <div className="home">
         <div className="mode">
-          <button
-            className="mode-btn"
-            onClick={() => {
-              setMode("main-container light w-100");
-            }}
-          >
-            <img src={Sun} />
-          </button>
+          <div className="btns">
+            <button
+              className="mode-btn"
+              onClick={() => {
+                setMode("main-container light w-100");
+              }}
+            >
+              <img src={Sun} />
+            </button>
 
-          <button
-            className="mode-btn"
-            onClick={() => {
-              setMode("main-container dark w-100");
-            }}
-          >
-            <img src={Moon} />
-          </button>
+            <button
+              className="mode-btn"
+              onClick={() => {
+                setMode("main-container dark w-100");
+              }}
+            >
+              <img src={Moon} />
+            </button>
+          </div>
         </div>
         <div className="search-div w-100 box">
           <input
@@ -136,35 +136,47 @@ export default function App() {
           />
         </div>
 
-        <Lottie options={defaultOptions} height={400} width={400} />
-      </div>
+        {/* -------- */}
 
-      <div className="weather">
-        {weather[0] && (
-          <div>
-            <div className="location w-100 box">
-              {weather[0].name}, {weather[0].sys.country}
-            </div>
-            <div className="weather-resp w-100 box">
-              <div className="temp-date w-50 box h-100 col">
+        <div className="home-cntnt box">
+          {weather[0] && (
+            <section className="weather-resp box">
+              <div className="temp-date box h-100 col">
                 <div className="temperature">
                   <div>{Math.round(weather[0].main.temp)}</div>
                   <div className="celsius">°C</div>
                 </div>
                 <div className="date box">
-                  {day}, {hour}h{minutes}min
+                  {day}, {hour}:{minutes}
                 </div>
               </div>
-              <div className="icon w-50 box h-100">
-                <img
-                  className="clouds"
-                  src={`https://openweathermap.org/img/wn/${weather[0].weather[0].icon}@2x.png`}
-                />
-              </div>
-            </div>
+            </section>
+          )}
 
-            {/* -------- */}
+          <div className="lottie box">
+            <Lottie options={defaultOptions} height={500} width={800} />
+          </div>
 
+          {weather[0] && (
+            <section className="icon box">
+              <img
+                className="clouds"
+                src={`https://openweathermap.org/img/wn/${weather[0].weather[0].icon}@2x.png`}
+              />
+
+              {/* <div className="condition box">
+                {day}, {hour}:{minutes}
+              </div> */}
+            </section>
+          )}
+        </div>
+      </div>
+
+      {/* -------- */}
+
+      <div className="weather">
+        {weather[0] && (
+          <div>
             <div className="forecast w-100 box">
               <h2 className="title">Previsão do tempo</h2>
               <div className="slider box w-100">
@@ -253,15 +265,15 @@ export default function App() {
                 />
               </div>
             </div>
-            <div>
+            {/* <div>
               <Location />
-            </div>
+            </div> */}
           </div>
         )}
       </div>
-      <div className="app-footer">
+      {/* <div className="app-footer">
         <Footer />
-      </div>
+      </div> */}
     </div>
   );
 }

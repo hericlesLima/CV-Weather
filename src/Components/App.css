@@ -4,13 +4,13 @@
 }
 
 .dark {
-  --bg-color: #2C3333;
-  --primary: #2666CF;
+  --bg-color: #2c3333;
+  --primary: #2666cf;
 }
 
 .main-container {
   background-color: var(--bg-color);
-  font-family: 'Rajdhani', sans-serif;
+  font-family: "Rajdhani", sans-serif;
   color: var(--primary);
 }
 .home {
@@ -18,27 +18,58 @@
   height: 100vh;
 }
 
+.home-cntnt {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  height: 70%;
+  margin-top: 2rem;
+}
+
+.weather-resp,
+.lottie,
+.icon {
+  width: 30%;
+  font-weight: 600;
+}
+
+.lottie {
+  width: 30%;
+}
+
 .mode {
   display: flex;
   justify-content: flex-end;
   margin-right: 1rem;
   padding-top: 1rem;
+  width: auto;
+}
+
+img {
+  /* background-color: var(--bg-color); */
+  margin: 2px;
+}
+
+.btns {
+  border: solid 2px var(--bg-color);
+  border-radius: 20px;
 }
 
 .mode-btn {
   border: none;
   background-color: transparent;
-  margin: 5px;
+  margin: 5px 5px 2px 5px;
   cursor: pointer;
 }
 
 .mode-btn img {
-  width: 2rem;
-  height: 2rem;
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 .search {
-  width: 45%;
+  width: 25%;
   height: 2rem;
   padding-left: 1.5rem;
   background-color: transparent;
@@ -46,12 +77,15 @@
   outline: none;
   border: 0.1rem solid var(--bg-color);
   border-radius: 0.5rem;
+  background: url(../Assets/search.png) no-repeat scroll 7px 7px;
+  padding-left: 2rem;
 }
 
-::placeholder{
+::placeholder {
   color: var(--bg-color);
-  font-family: 'Rajdhani', sans-serif;;
+  font-family: "Rajdhani", sans-serif;
   font-size: 0.9rem;
+  font-weight: 600;
 }
 
 .location {
@@ -60,14 +94,10 @@
   font-size: 2rem;
 }
 
-.weather {
-  /* min-height: 23vh; */
-}
-
 .weather-resp {
-  height: 15rem;
+  /* height: 15rem; */
+  color: var(--bg-color);
 }
-
 
 .temperature {
   font-size: 11.25rem;
@@ -82,6 +112,9 @@
 .date {
   font-size: 2.813rem;
   font-weight: 200;
+}
+.icon {
+  flex-direction: column;
 }
 
 .clouds {
@@ -116,6 +149,7 @@
   display: flex;
   flex-direction: column;
   gap: 3rem;
+  padding-bottom: 2rem;
 }
 
 .data-1 {
@@ -141,7 +175,7 @@
   align-self: center;
 }
 
-.map-leaflet{
+.map-leaflet {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -164,11 +198,17 @@
     flex-direction: column;
   }
 
+  .home-cntnt {
+    flex-direction: column;
+    height: auto;
+    justify-content: center;
+  }
+
   .temp-date {
     width: 100%;
   }
 
-  .temperature{
+  .temperature {
     font-size: 9rem;
   }
 
@@ -182,10 +222,11 @@
   }
 
   .data-title {
-    margin-top: 5rem; 
+    margin-top: 5rem;
   }
 
-  .data-1, .data-2 {
+  .data-1,
+  .data-2 {
     flex-direction: column;
     gap: 2.5rem;
   }
