@@ -1,2 +1,2 @@
-#Weather Application
+# Weather Application
 Developed by me using the OpenWeatherApi
